@@ -1,5 +1,8 @@
 # Kicli
 
+[![Go](https://github.com/anned20/kicli/actions/workflows/go.yml/badge.svg)](https://github.com/anned20/kicli/actions/workflows/go.yml)
+[![Docker publish](https://github.com/anned20/kicli/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/anned20/kicli/actions/workflows/docker-publish.yml)
+
 This tool is a CLI interface to the [Kimai time tracking project](https://www.kimai.org/).
 
 ## Installation
@@ -15,6 +18,8 @@ If you have Go on your system, you can install this tool by using `go install gi
 To download the image use `docker pull ghcr.io/anned20/kicli:main`.
 
 To use it, use `docker run -it -v $HOME/:/root/ --rm ghcr.io/anned20/kicli:main [args]`.
+
+**Note:** The mount of the `$HOME` directory onto the root user is necessary to store the information from the `setup` step.
 
 ### Binary download
 
