@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 
 	"github.com/sirupsen/logrus"
@@ -117,7 +117,7 @@ func (a *API) do(req *http.Request) (*http.Response, error) {
 
 	if response.StatusCode < 200 || response.StatusCode >= 300 {
 		// Get the error message from the response body
-		errorMessage, err := ioutil.ReadAll(response.Body)
+		errorMessage, err := io.ReadAll(response.Body)
 
 		if err != nil {
 			return nil, err
