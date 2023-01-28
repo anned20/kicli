@@ -10,12 +10,13 @@ import (
 	"github.com/samber/lo"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 // trackCmd represents the track command
 var trackCmd = &cobra.Command{
 	Use:   "track",
-	Short: "Start tracking time",
+	Short: "Start tracking time and manage current timer",
 	Run: func(cmd *cobra.Command, args []string) {
 		ctx := cmd.Context()
 
@@ -53,11 +54,21 @@ var trackCmd = &cobra.Command{
 			return activity.Name
 		})
 
+		defaultActivityName := viper.GetString("kimai_default_activity")
+
+		// Check if activityNames contains defaultActivityName
+		if !lo.Contains(activityNames, defaultActivityName) {
+			logrus.WithFields(logrus.Fields{
+				"defaultActivityName": defaultActivityName,
+				"activityNames":       activityNames,
+			}).Fatal("Default activity not found in list of activities")
+		}
+
 		activityName := ""
 		prompt := &survey.Select{
 			Message: "Choose an activity:",
 			Options: activityNames,
-			Default: "Softwaredevelopment",
+			Default: defaultActivityName,
 		}
 		err := survey.AskOne(prompt, &activityName)
 

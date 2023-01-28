@@ -25,12 +25,14 @@ the following variables:
 	- Base URL
 	- Username
 	- API token
+	- Default activity
 `,
 	Run: func(cmd *cobra.Command, args []string) {
 		var config struct {
-			BaseURL  string `yaml:"kimai_base_url"`
-			Username string `yaml:"kimai_username"`
-			Token    string `yaml:"kimai_api_token"`
+			BaseURL         string `yaml:"kimai_base_url"`
+			Username        string `yaml:"kimai_username"`
+			Token           string `yaml:"kimai_api_token"`
+			DefaultActivity string `yaml:"kimai_default_activity"`
 		}
 
 		// Check if file kicli.yaml exists, if it does not, create it
@@ -94,6 +96,13 @@ the following variables:
 					Default: config.Token,
 				},
 			},
+			{
+				Name: "defaultActivity",
+				Prompt: &survey.Input{
+					Message: "Default activity (e.g. \"Softwaredevelopment\"):",
+					Default: config.DefaultActivity,
+				},
+			},
 		}
 
 		err := survey.Ask(questions, &config)
@@ -124,7 +133,8 @@ the following variables:
 			logrus.Fatal(err)
 		}
 
-		fmt.Printf("You are logged in as %s (%s)", color.YellowString(me.Alias), color.YellowString(me.Username))
+		fmt.Printf("You are logged in as %s (%s)\n", color.YellowString(me.Alias), color.YellowString(me.Username))
+		fmt.Printf("Config is written to %s\n", color.YellowString(cfgFile))
 
 		// Write default config to file
 		err = yaml.NewEncoder(file).Encode(config)
