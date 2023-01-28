@@ -63,6 +63,7 @@ func (k *KimaiClient) CreateTimesheet(timesheet *Timesheet) (*Timesheet, error) 
 	createTimesheet := &CreateTimesheet{
 		ProjectID:  timesheet.ProjectID,
 		ActivityID: timesheet.ActivityID,
+		Billable:   timesheet.Billable,
 	}
 
 	now := time.Now()

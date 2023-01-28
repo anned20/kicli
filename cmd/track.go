@@ -133,6 +133,7 @@ var trackCmd = &cobra.Command{
 		timesheet := &kimai.Timesheet{
 			ProjectID:  project.ID,
 			ActivityID: activity.ID,
+			Billable:   true,
 		}
 
 		_, err = kimaiClient.CreateTimesheet(timesheet)

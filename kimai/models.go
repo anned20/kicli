@@ -116,6 +116,7 @@ type CreateTimesheet struct {
 	ProjectID  int    `json:"project"`
 	Start      string `json:"begin"`
 	ActivityID int    `json:"activity"`
+	Billable   bool   `json:"billable"`
 }
 
 type UserPreference struct {
