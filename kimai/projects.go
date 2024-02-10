@@ -122,9 +122,11 @@ func (k *KimaiClient) GetProject(id int) (*Project, error) {
 
 func (k *KimaiClient) CreateProject(project *Project) (*Project, error) {
 	createProject := &CreateProject{
-		Name:       project.Name,
-		CustomerID: project.CustomerID,
-		Visible:    true,
+		Name:             project.Name,
+		CustomerID:       project.CustomerID,
+		Visible:          true,
+		Billable:         true,
+		GlobalActivities: true,
 	}
 
 	response, err := k.api.post("/projects", createProject)

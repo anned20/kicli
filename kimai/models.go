@@ -30,6 +30,16 @@ type Customer struct {
 	Visible    bool        `json:"visible"`
 	Currency   string      `json:"currency"`
 	MetaFields []MetaField `json:"metaFields"`
+	Country    string      `json:"country"`
+	Timezone   string      `json:"timezone"`
+}
+
+type CreateCustomer struct {
+	Name     string `json:"name"`
+	Country  string `json:"country"`
+	Currency string `json:"currency"`
+	Timezone string `json:"timezone"`
+	Visible  bool   `json:"visible"`
 }
 
 type Plugin struct {
@@ -68,9 +78,11 @@ type ActiveProject struct {
 }
 
 type CreateProject struct {
-	Name       string `json:"name"`
-	CustomerID int    `json:"customer"`
-	Visible    bool   `json:"visible"`
+	Name             string `json:"name"`
+	CustomerID       int    `json:"customer"`
+	Visible          bool   `json:"visible"`
+	Billable         bool   `json:"billable"`
+	GlobalActivities bool   `json:"globalActivities"`
 }
 
 type Timesheet struct {

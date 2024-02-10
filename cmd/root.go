@@ -132,6 +132,10 @@ func initConfig() {
 	viper.SetDefault("kimai_username", "")
 	viper.SetDefault("kimai_api_token", "")
 	viper.SetDefault("kimai_default_activity", "")
+	viper.SetDefault("kimai_default_country", "")
+	viper.SetDefault("kimai_default_currency", "")
+	viper.SetDefault("kimai_default_language", "")
+	viper.SetDefault("kimai_default_timezone", "")
 
 	// Set the color output
 	if noColor {

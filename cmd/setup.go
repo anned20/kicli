@@ -26,6 +26,9 @@ the following variables:
 	- Username
 	- API token
 	- Default activity
+	- Default country (for creating customers)
+	- Default currency (for creating customers)
+	- Default timezone (for creating customers)
 `,
 	Run: func(cmd *cobra.Command, args []string) {
 		var config struct {
@@ -33,6 +36,9 @@ the following variables:
 			Username        string `yaml:"kimai_username"`
 			Token           string `yaml:"kimai_api_token"`
 			DefaultActivity string `yaml:"kimai_default_activity"`
+			DefaultCountry  string `yaml:"kimai_default_country"`
+			DefaultCurrency string `yaml:"kimai_default_currency"`
+			DefaultTimezone string `yaml:"kimai_default_timezone"`
 		}
 
 		// Check if file kicli.yaml exists, if it does not, create it
