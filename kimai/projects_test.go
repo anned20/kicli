@@ -55,7 +55,7 @@ func TestGetProjects(t *testing.T) {
 		]`),
 	)
 
-	client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+	client := NewKimaiClient("http://localhost:8080", "admin")
 
 	projects, err := client.GetProjects()
 
@@ -108,7 +108,7 @@ func TestGetMalformedProjects(t *testing.T) {
 				httpmock.NewStringResponder(200, test.response),
 			)
 
-			client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+			client := NewKimaiClient("http://localhost:8080", "admin")
 
 			projects, err := client.GetProjects()
 
@@ -129,7 +129,7 @@ func TestGetMalformedProjects(t *testing.T) {
 }
 
 func TestGetProjectsWithNoAPI(t *testing.T) {
-	client := NewKimaiClient("http://localhost:65500", "admin", "admin")
+	client := NewKimaiClient("http://localhost:65500", "admin")
 
 	projects, err := client.GetProjects()
 
@@ -158,7 +158,7 @@ func TestGetProject(t *testing.T) {
 		}`),
 	)
 
-	client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+	client := NewKimaiClient("http://localhost:8080", "admin")
 
 	project, err := client.GetProject(1)
 
@@ -196,7 +196,7 @@ func TestGetMalformedProject(t *testing.T) {
 				httpmock.NewStringResponder(200, test.response),
 			)
 
-			client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+			client := NewKimaiClient("http://localhost:8080", "admin")
 
 			project, err := client.GetProject(1)
 
@@ -237,7 +237,7 @@ func TestCreateProject(t *testing.T) {
 		}`),
 	)
 
-	client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+	client := NewKimaiClient("http://localhost:8080", "admin")
 
 	project := &Project{
 		Name: "Project 1",

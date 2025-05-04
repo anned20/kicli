@@ -11,29 +11,26 @@ import (
 )
 
 type API struct {
-	client   *http.Client
-	baseURL  string
-	username string
-	token    string
+	client  *http.Client
+	baseURL string
+	token   string
 }
 
-func NewAPI(baseURL string, username string, token string) *API {
+func NewAPI(baseURL string, token string) *API {
 	// Strip trailing slash from baseURL
 	if baseURL[len(baseURL)-1] == '/' {
 		baseURL = baseURL[:len(baseURL)-1]
 	}
 
 	logrus.WithFields(logrus.Fields{
-		"baseURL":  baseURL,
-		"username": username,
-		"token":    token,
+		"baseURL": baseURL,
+		"token":   token,
 	}).Debug("Creating API")
 
 	return &API{
-		client:   &http.Client{},
-		baseURL:  baseURL,
-		username: username,
-		token:    token,
+		client:  &http.Client{},
+		baseURL: baseURL,
+		token:   token,
 	}
 }
 
@@ -99,8 +96,7 @@ func (a *API) patch(url string, body interface{}) (*http.Response, error) {
 }
 
 func (a *API) do(req *http.Request) (*http.Response, error) {
-	req.Header.Add("X-AUTH-USER", a.username)
-	req.Header.Add("X-AUTH-TOKEN", a.token)
+	req.Header.Add("Authorization", "Bearer "+a.token)
 	req.Header.Add("Accept", "application/json")
 
 	logrus.WithFields(logrus.Fields{

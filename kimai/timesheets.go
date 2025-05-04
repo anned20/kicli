@@ -68,7 +68,7 @@ func (k *KimaiClient) CreateTimesheet(timesheet *Timesheet) (*Timesheet, error) 
 
 	now := time.Now()
 
-	createTimesheet.Start = now.Format(dateFormat)
+	createTimesheet.Start = now.Format(dateTimeFormat)
 
 	response, err := k.api.post("/timesheets", createTimesheet)
 

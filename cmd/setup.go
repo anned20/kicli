@@ -23,14 +23,12 @@ This command will help you to configure the application. It will ask you for
 the following variables:
 
 	- Base URL
-	- Username
 	- API token
 	- Default activity
 `,
 	Run: func(cmd *cobra.Command, args []string) {
 		var config struct {
 			BaseURL         string `yaml:"kimai_base_url"`
-			Username        string `yaml:"kimai_username"`
 			Token           string `yaml:"kimai_api_token"`
 			DefaultActivity string `yaml:"kimai_default_activity"`
 		}
@@ -83,13 +81,6 @@ the following variables:
 				},
 			},
 			{
-				Name: "username",
-				Prompt: &survey.Input{
-					Message: "Username:",
-					Default: config.Username,
-				},
-			},
-			{
 				Name: "token",
 				Prompt: &survey.Input{
 					Message: "API token:",
@@ -122,7 +113,6 @@ the following variables:
 
 		kimaiClient := kimai.NewKimaiClient(
 			config.BaseURL,
-			config.Username,
 			config.Token,
 		)
 

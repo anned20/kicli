@@ -34,7 +34,7 @@ func TestGetCustomers(t *testing.T) {
 		]`),
 	)
 
-	client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+	client := NewKimaiClient("http://localhost:8080", "admin")
 
 	customers, err := client.GetCustomers()
 
@@ -94,7 +94,7 @@ func TestGetMalformedCustomers(t *testing.T) {
 				httpmock.NewStringResponder(200, test.response),
 			)
 
-			client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+			client := NewKimaiClient("http://localhost:8080", "admin")
 
 			customers, err := client.GetCustomers()
 
@@ -115,7 +115,7 @@ func TestGetMalformedCustomers(t *testing.T) {
 }
 
 func TestGetCustomersWithNoAPI(t *testing.T) {
-	client := NewKimaiClient("http://localhost:65500", "admin", "admin")
+	client := NewKimaiClient("http://localhost:65500", "admin")
 
 	customers, err := client.GetCustomers()
 

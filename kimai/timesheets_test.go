@@ -34,7 +34,7 @@ func TestGetTimesheet(t *testing.T) {
 		}`),
 	)
 
-	client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+	client := NewKimaiClient("http://localhost:8080", "admin")
 
 	timesheet, err := client.GetTimesheet(1)
 
@@ -72,7 +72,7 @@ func TestGetMalformedTimesheet(t *testing.T) {
 				httpmock.NewStringResponder(200, test.response),
 			)
 
-			client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+			client := NewKimaiClient("http://localhost:8080", "admin")
 
 			timesheet, err := client.GetTimesheet(1)
 
@@ -119,7 +119,7 @@ func TestCreateTimesheet(t *testing.T) {
 		}`),
 	)
 
-	client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+	client := NewKimaiClient("http://localhost:8080", "admin")
 
 	timesheet := &Timesheet{
 		Description: "Timesheet 1",

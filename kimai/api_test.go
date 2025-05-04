@@ -20,8 +20,8 @@ func TestNewApi(t *testing.T) {
 		}`),
 	)
 
-	clientWithoutTrailingSlash := NewKimaiClient("http://localhost:8080", "admin", "admin")
-	clientWithTrailingSlash := NewKimaiClient("http://localhost:8080/", "admin", "admin")
+	clientWithoutTrailingSlash := NewKimaiClient("http://localhost:8080", "admin")
+	clientWithTrailingSlash := NewKimaiClient("http://localhost:8080/", "admin")
 
 	version, err := clientWithoutTrailingSlash.GetVersion()
 	assert.NoError(t, err)
@@ -45,7 +45,7 @@ func TestApiError(t *testing.T) {
 		}`),
 	)
 
-	client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+	client := NewKimaiClient("http://localhost:8080", "admin")
 
 	_, err := client.GetVersion()
 

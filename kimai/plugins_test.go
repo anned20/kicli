@@ -27,7 +27,7 @@ func TestGetPlugins(t *testing.T) {
 		]`),
 	)
 
-	client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+	client := NewKimaiClient("http://localhost:8080", "admin")
 
 	plugins, err := client.GetPlugins()
 
@@ -82,7 +82,7 @@ func TestGetMalformedPlugins(t *testing.T) {
 				httpmock.NewStringResponder(200, test.response),
 			)
 
-			client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+			client := NewKimaiClient("http://localhost:8080", "admin")
 
 			plugins, err := client.GetPlugins()
 
@@ -103,7 +103,7 @@ func TestGetMalformedPlugins(t *testing.T) {
 }
 
 func TestGetPluginsWithNoAPI(t *testing.T) {
-	client := NewKimaiClient("http://localhost:65500", "admin", "admin")
+	client := NewKimaiClient("http://localhost:65500", "admin")
 
 	plugins, err := client.GetPlugins()
 

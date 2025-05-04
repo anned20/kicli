@@ -45,10 +45,10 @@ func TestNormalizeTimestamps(t *testing.T) {
 		},
 		"start only": {
 			obj: &object{
-				RawStart: dateFormat,
+				RawStart: dateTimeFormat,
 			},
 			createExpected: func() *object {
-				dt, _ := time.Parse(dateFormat, dateFormat)
+				dt, _ := time.Parse(dateTimeFormat, dateTimeFormat)
 
 				return &object{
 					Start: &dt,
@@ -57,10 +57,10 @@ func TestNormalizeTimestamps(t *testing.T) {
 		},
 		"end only": {
 			obj: &object{
-				RawEnd: dateFormat,
+				RawEnd: dateTimeFormat,
 			},
 			createExpected: func() *object {
-				dt, _ := time.Parse(dateFormat, dateFormat)
+				dt, _ := time.Parse(dateTimeFormat, dateTimeFormat)
 
 				return &object{
 					End: &dt,
@@ -69,11 +69,11 @@ func TestNormalizeTimestamps(t *testing.T) {
 		},
 		"start and end": {
 			obj: &object{
-				RawStart: dateFormat,
-				RawEnd:   dateFormat,
+				RawStart: dateTimeFormat,
+				RawEnd:   dateTimeFormat,
 			},
 			createExpected: func() *object {
-				dt, _ := time.Parse(dateFormat, dateFormat)
+				dt, _ := time.Parse(dateTimeFormat, dateTimeFormat)
 
 				return &object{
 					Start: &dt,
@@ -84,13 +84,13 @@ func TestNormalizeTimestamps(t *testing.T) {
 		"start and end with invalid date": {
 			obj: &object{
 				RawStart: "invalid",
-				RawEnd:   dateFormat,
+				RawEnd:   dateTimeFormat,
 			},
 			errString: "cannot parse",
 		},
 		"start and end with invalid date 2": {
 			obj: &object{
-				RawStart: dateFormat,
+				RawStart: dateTimeFormat,
 				RawEnd:   "invalid",
 			},
 			errString: "cannot parse",

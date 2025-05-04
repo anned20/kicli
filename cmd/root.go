@@ -37,7 +37,7 @@ var rootCmd = &cobra.Command{
 It allows you to manage your projects, tasks and timesheets.`,
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		if cmd != setupCmd {
-			required := []string{"kimai_base_url", "kimai_username", "kimai_api_token"}
+			required := []string{"kimai_base_url", "kimai_api_token"}
 
 			missing := []string{}
 
@@ -58,7 +58,6 @@ It allows you to manage your projects, tasks and timesheets.`,
 			// Initialize the Kimai client
 			kimaiClient := kimai.NewKimaiClient(
 				viper.GetString("kimai_base_url"),
-				viper.GetString("kimai_username"),
 				viper.GetString("kimai_api_token"),
 			)
 
@@ -129,7 +128,6 @@ func initConfig() {
 
 	// Set default values for configuration variables
 	viper.SetDefault("kimai_base_url", "")
-	viper.SetDefault("kimai_username", "")
 	viper.SetDefault("kimai_api_token", "")
 	viper.SetDefault("kimai_default_activity", "")
 

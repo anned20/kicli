@@ -27,7 +27,7 @@ func TestGetVersion(t *testing.T) {
 		`),
 	)
 
-	client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+	client := NewKimaiClient("http://localhost:8080", "admin")
 
 	version, err := client.GetVersion()
 
@@ -76,7 +76,7 @@ func TestGetMalformedVersion(t *testing.T) {
 				httpmock.NewStringResponder(200, test.response),
 			)
 
-			client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+			client := NewKimaiClient("http://localhost:8080", "admin")
 
 			version, err := client.GetVersion()
 
@@ -97,7 +97,7 @@ func TestGetMalformedVersion(t *testing.T) {
 }
 
 func TestGetVersionWithNoAPI(t *testing.T) {
-	client := NewKimaiClient("http://localhost:65500", "admin", "admin")
+	client := NewKimaiClient("http://localhost:65500", "admin")
 
 	version, err := client.GetVersion()
 

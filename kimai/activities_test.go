@@ -44,7 +44,7 @@ func TestGetActivities(t *testing.T) {
 		]`),
 	)
 
-	client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+	client := NewKimaiClient("http://localhost:8080", "admin")
 
 	activities, err := client.GetActivities()
 
@@ -102,7 +102,7 @@ func TestGetMalformedActivities(t *testing.T) {
 				httpmock.NewStringResponder(200, test.response),
 			)
 
-			client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+			client := NewKimaiClient("http://localhost:8080", "admin")
 
 			activities, err := client.GetActivities()
 
@@ -123,7 +123,7 @@ func TestGetMalformedActivities(t *testing.T) {
 }
 
 func TestGetActivitiesWithNoAPI(t *testing.T) {
-	client := NewKimaiClient("http://localhost:65500", "admin", "admin")
+	client := NewKimaiClient("http://localhost:65500", "admin")
 
 	activities, err := client.GetActivities()
 

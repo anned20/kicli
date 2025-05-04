@@ -35,7 +35,7 @@ func TestGetMe(t *testing.T) {
 		`),
 	)
 
-	client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+	client := NewKimaiClient("http://localhost:8080", "admin")
 
 	me, err := client.GetMe()
 
@@ -79,7 +79,7 @@ func TestGetMalformedMe(t *testing.T) {
 				httpmock.NewStringResponder(200, test.response),
 			)
 
-			client := NewKimaiClient("http://localhost:8080", "admin", "admin")
+			client := NewKimaiClient("http://localhost:8080", "admin")
 
 			me, err := client.GetMe()
 
@@ -100,7 +100,7 @@ func TestGetMalformedMe(t *testing.T) {
 }
 
 func TestGetMeWithNoAPI(t *testing.T) {
-	client := NewKimaiClient("http://localhost:65500", "admin", "admin")
+	client := NewKimaiClient("http://localhost:65500", "admin")
 
 	me, err := client.GetMe()
 

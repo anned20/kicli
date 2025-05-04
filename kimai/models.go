@@ -101,7 +101,6 @@ type ActiveTimesheet struct {
 	Description string        `json:"description"`
 	FixedRate   float64       `json:"fixedRate"`
 	HourlyRate  float64       `json:"hourlyRate"`
-	UserID      int           `json:"user"`
 	Exported    bool          `json:"exported"`
 	Billable    bool          `json:"billable"`
 	Tags        []string      `json:"tags"`
